@@ -32,9 +32,9 @@ def task3():
 
 
 def task4():
-    r = float(input("Радиус меньшего основания (r)="))
-    R = float(input("Радиус большего основания (R)="))
-    h = float(input("Высота конуса (h)="))
+    r = float(input("Радиус меньшего основания (r)= "))
+    R = float(input("Радиус большего основания (R)= "))
+    h = float(input("Высота конуса (h)= "))
 
     cone_generatrix = math.sqrt(h ** 2 + (R - r) ** 2)
 
@@ -47,9 +47,10 @@ def task5():
     h = float(input("Ширина реки (h)= "))
 
     angle = math.atan(v / V)
+    angle1 = math.degrees(angle)
 
     if V > v:
-        print(math.degrees(angle))
+        print("Угол - {:.4f}".format(angle1))
     else:
         print("Скорость парома должна быть больше скорости течения реки!")
 
@@ -66,20 +67,44 @@ def task6():
     else:
         print("Ошибка: расстояние меньше или равно нулю")
 
-    R = math.sqrt(S / 4 * math.pi)  # Радиус шара
-    r = math.sqrt(abs(R**2-distance**2))  # Радиус сечения
-    if r>0:
-        pass
+    R = math.sqrt(S / (4 * math.pi))  # Радиус шара
+    r1 = R**2-distance**2  # Радиус сечения в квадрате
+    while r1 < 0:
+        print("Ошибка: радиус сечения меньше нуля")
+        break
     else:
-        print("Ошибка: квадратный корень меньше нуля")
-    cross_sec_area =  math.pi * r**2
+        r = math.sqrt(r1)  # Радиус сечения
+        cross_sec_area = math.pi * r ** 2
 
-    print ("Площадь поперечного сечения = {:.4f}". format(cross_sec_area))
-
-
-    def task7():
-        pass
+        print("Площадь поперечного сечения = {:.4f}".format(cross_sec_area))
 
 
+def task7():
+        x1 = float(input("Введите X1 -"))
+        x2 = float(input("Введите X2 -"))
 
-task6()
+        distance=abs(x2-x1)
+        print("Расстояние между X1 и X2 - {:.4f}". format(distance))
+
+
+def task8():
+    a = float(input("Угол наклона заднего стекла к горизонту (a)Угол наклона заднего стекла к горизонту (a)= "))
+    V1 = float(input("Скорость автомобиля (км/ч) = "))
+
+    V2 = V1 * math.sin(math.radians(a))  # Скорость капель дождя
+
+    print("Скорость капель дождя (V2) = {:.4f}". format(V2), "км/ч")
+
+
+def task9():
+    euro = float(input("Сумма в евро - "))
+    comm_rate = float(input("Коммиссия в процентах - "))
+    exchange_rate = 1.05  # Курс евро к доллару
+    commis = euro * comm_rate/100  # Рассчет коммиссии
+    euro_after_comm = euro - commis
+    usd = euro_after_comm * exchange_rate
+
+    print("Сумма в долларах - ", round(usd, 2))
+
+
+task9()
