@@ -19,5 +19,9 @@ def task1():
     number = float(input("Введите число - "))
     print("Число является простым -", is_prime(number),", Число является положительным -", is_positive(number))
 
+
+def task2():
+    pass
+
 task1()
 
